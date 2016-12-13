@@ -49,14 +49,21 @@ Plug 'fsharp/vim-fsharp', { 'for': 'fsharp', 'do': 'make fsautocomplete' }
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
+Plug 'sheerun/vim-polyglot'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 "Colors
 Plug 'twerth/ir_black'
 Plug 'jnurmine/Zenburn'
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'Soares/base16.nvim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'tomasr/molokai'
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plug 'jonathanfilip/vim-lucius'
+Plug 'joshdick/onedark.vim'
 
 " -------------------------------------------------------
 call plug#end()
@@ -75,12 +82,13 @@ set background=dark
 " colors molokai
 " colors base16-atelierseaside
 " colors lucius
-colors base16-ocean
+" colors base16-ocean
+colors jellybeans
 
 
 " let g:terminal_color_0 = '#151515'
 " let g:terminal_color_1 = '#cf6a4c'
-" let g:terminal_color_2 = '#99AD6A'
+" let g:terminal_color_2 = '#99AD6Akk'
 " let g:terminal_color_3 = '#D8AD4C'
 " let g:terminal_color_4 = '#597BC5'
 " let g:terminal_color_5 = '#AD37BD'
@@ -95,6 +103,8 @@ colors base16-ocean
 " let g:terminal_color_14 = '#83CAFF'
 " let g:terminal_color_15 = '#D3D3D3'
 
+set termguicolors
+let g:airline_powerline_fonts = 1
 
 " -------------------------------------------------------
 " Leader
@@ -200,7 +210,7 @@ nnoremap <leader>f :FzfFiles<CR>
 nnoremap <leader>b :FzfBuffers<CR>
 nnoremap <leader>g :FzfGitFiles<CR>
 nnoremap <leader>a :FzfAg <C-r>=expand('<cWORD>')<CR>
-nnoremap <leader>t :FzfTags <C-r>=expand('<cWORD>')<CR>
+nnoremap <leader>t :FzfTags <C-r>=expand('<cword>')<CR><CR>
 
 " Mapping selecting mappings
 nnoremap <leader><tab> <plug>(fzf-maps-n)
