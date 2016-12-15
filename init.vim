@@ -7,7 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'benekastah/neomake'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' }
 Plug 'kassio/neoterm'
 Plug 'majutsushi/tagbar'
 
@@ -242,7 +242,7 @@ let g:deoplete#enable_at_startup = 1
 " -------------------------------------------------------
 
 nmap <F8> :TagbarToggle<CR>
-
+let g:airline#extensions#tagbar#enabled = 0
 
 " -------------------------------------------------------
 " Neoterm
