@@ -23,8 +23,7 @@ Plug 'tpope/vim-ragtag'
 
 Plug 'airblade/vim-gitgutter'
 
-Plug 'rking/ag.vim'
-Plug 'Chun-Yang/vim-action-ag'
+Plug 'mileszs/ack.vim'
 
 Plug 'mbbill/undotree'
 
@@ -49,7 +48,8 @@ Plug 'fsharp/vim-fsharp', { 'for': 'fsharp', 'do': 'make fsautocomplete' }
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
 
-Plug 'sheerun/vim-polyglot'
+" This seems to be slow
+" Plug 'sheerun/vim-polyglot'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -129,6 +129,7 @@ set hidden
 set hlsearch
 set ignorecase smartcase
 set incsearch
+set inccommand=split
 set laststatus=2
 set nojoinspaces
 set number
@@ -186,8 +187,6 @@ nmap <leader>v :view %%
 
 command! -nargs=* -complete=file W w <args>
 
-nmap <F8> :TagbarToggle<CR>
-
 " -------------------------------------------------------
 " Whitespace hygene
 " -------------------------------------------------------
@@ -200,6 +199,14 @@ autocmd BufWritePre * StripWhitespace
 " -------------------------------------------------------
 
 autocmd FocusLost * :silent! wall
+
+" -------------------------------------------------------
+" Ack
+" -------------------------------------------------------
+
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 
 " -------------------------------------------------------
 " FZF
@@ -234,57 +241,8 @@ let g:deoplete#enable_at_startup = 1
 " Tagbar
 " -------------------------------------------------------
 
-let g:tagbar_type_coffee = {
-    \ 'ctagstype' : 'CoffeeScript',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 'm:methods',
-        \ 'f:functions',
-        \ 'v:variables',
-        \ 'f:fields',
-    \ ]
-    \ }
-let g:tagbar_type_css = {
-\ 'ctagstype' : 'CSS',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-\ }
-let g:tagbar_type_go = {
-    \ 'ctagstype': 'Go',
-    \ 'kinds' : [
-        \'p:package',
-        \'f:function',
-        \'v:variables',
-        \'t:type',
-        \'c:const'
-    \]
-\}
-let g:tagbar_type_ruby = {
-    \ 'kinds' : [
-        \ 'm:modules',
-        \ 'c:classes',
-        \ 'd:describes',
-        \ 'C:contexts',
-        \ 'f:methods',
-        \ 'F:singleton methods'
-    \ ]
-\ }
-let g:tagbar_type_typescript = {
-  \ 'ctagstype': 'typescript',
-  \ 'kinds': [
-    \ 'c:classes',
-    \ 'n:modules',
-    \ 'f:functions',
-    \ 'v:variables',
-    \ 'v:varlambdas',
-    \ 'm:members',
-    \ 'i:interfaces',
-    \ 'e:enums',
-  \ ]
-\ }
+nmap <F8> :TagbarToggle<CR>
+
 
 " -------------------------------------------------------
 " Neoterm
