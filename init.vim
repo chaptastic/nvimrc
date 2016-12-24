@@ -257,6 +257,7 @@ vnoremap <silent> <f9> :TREPLSend<cr>
 " run set test lib
 nnoremap <silent> <leader>rt :w<CR>:call neoterm#test#run('all')<cr>
 nnoremap <silent> <leader>rf :w<CR>:call neoterm#test#run('file')<cr>
+nnoremap <silent> <leader>rF :w<CR>:call neoterm#test#run('failed')<cr>
 nnoremap <silent> <leader>rn :w<CR>:call neoterm#test#run('current')<cr>
 nnoremap <silent> <leader>rr :w<CR>:call neoterm#test#rerun()<cr>
 
