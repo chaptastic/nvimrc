@@ -29,6 +29,8 @@ Plug 'mbbill/undotree'
 
 Plug 'godlygeek/tabular'
 
+Plug 'sbdchd/neoformat'
+
 Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'vim-ruby/vim-ruby'
@@ -44,6 +46,11 @@ Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'garyburd/go-explorer'
 
 Plug 'fsharp/vim-fsharp', { 'for': 'fsharp', 'do': 'make fsautocomplete' }
+
+Plug 'leafgarland/typescript-vim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'Quramy/tsuquyomi'
+Plug 'Quramy/vim-js-pretty-template'
 
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
