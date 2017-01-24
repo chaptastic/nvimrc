@@ -10,6 +10,8 @@ Plug 'benekastah/neomake'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' }
 Plug 'kassio/neoterm'
 Plug 'majutsushi/tagbar'
+Plug 'janko-m/vim-test'
+Plug 'skywind3000/asyncrun.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
@@ -276,11 +278,13 @@ nnoremap <silent> <f9> :TREPLSend<cr>
 vnoremap <silent> <f9> :TREPLSend<cr>
 
 " run set test lib
-nnoremap <silent> <leader>rt :w<CR>:call neoterm#test#run('all')<cr>
-nnoremap <silent> <leader>rf :w<CR>:call neoterm#test#run('file')<cr>
-nnoremap <silent> <leader>rF :w<CR>:call neoterm#test#run('failed')<cr>
-nnoremap <silent> <leader>rn :w<CR>:call neoterm#test#run('current')<cr>
-nnoremap <silent> <leader>rr :w<CR>:call neoterm#test#rerun()<cr>
+let test#strategy = "asyncrun"
+nmap <silent> <leader>rn :TestNearest<CR>
+nmap <silent> <leader>rf :TestFile<CR>
+nmap <silent> <leader>rt :TestSuite<CR>
+nmap <silent> <leader>rl :TestLast<CR>
+nmap <silent> <leader>rg :TestVisit<CR>
+let g:test#runner_commands = ['RSpec', 'GoTest']
 
 " Useful maps
 " hide/close terminal
