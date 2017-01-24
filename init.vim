@@ -21,6 +21,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-ragtag'
 
+Plug 'junegunn/vim-easy-align'
+
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+
 Plug 'airblade/vim-gitgutter'
 
 Plug 'mileszs/ack.vim'
@@ -120,6 +125,11 @@ let mapleader=","
 let maplocalleader = "\\"
 nnoremap \ ,
 
+" -------------------------------------------------------
+" Get rid of F1=help
+" -------------------------------------------------------
+noremap <F1> <Esc>
+inoremap <F1> <Esc>
 
 " -------------------------------------------------------
 " Options
@@ -194,6 +204,9 @@ nmap <leader>v :view %%
 
 command! -nargs=* -complete=file W w <args>
 
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 " -------------------------------------------------------
 " Whitespace hygene
 " -------------------------------------------------------
@@ -223,7 +236,8 @@ nnoremap <c-p> :FzfFiles<CR>
 nnoremap <leader>f :FzfFiles<CR>
 nnoremap <leader>b :FzfBuffers<CR>
 nnoremap <leader>g :FzfGitFiles<CR>
-nnoremap <leader>a :FzfAg <C-r>=expand('<cWORD>')<CR>
+nnoremap <leader>a :FzfAg <C-r>=expand('<cword>')<CR>
+nnoremap <leader>A :FzfAg <C-r>=expand('<cWORD>')<CR>
 nnoremap <leader>t :FzfTags <C-r>=expand('<cword>')<CR><CR>
 
 " Mapping selecting mappings
