@@ -7,11 +7,15 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'benekastah/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemovePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'kassio/neoterm'
 Plug 'majutsushi/tagbar'
 Plug 'janko-m/vim-test'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/echodoc.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-abolish'
@@ -22,6 +26,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-ragtag'
+Plug 'tpope/vim-rhubarb'
 
 Plug 'junegunn/vim-easy-align'
 
@@ -39,6 +44,8 @@ Plug 'godlygeek/tabular'
 Plug 'sbdchd/neoformat'
 
 Plug 'ntpeters/vim-better-whitespace'
+
+Plug 'Shougo/neco-vim'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
@@ -58,6 +65,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Quramy/tsuquyomi'
 Plug 'Quramy/vim-js-pretty-template'
+Plug 'mhartington/deoplete-typescript'
 
 Plug 'kana/vim-textobj-user'
 Plug 'nelstrom/vim-textobj-rubyblock'
@@ -78,6 +86,7 @@ Plug 'tomasr/molokai'
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plug 'jonathanfilip/vim-lucius'
 Plug 'joshdick/onedark.vim'
+Plug 'cocopon/iceberg.vim'
 
 " -------------------------------------------------------
 call plug#end()
@@ -97,8 +106,8 @@ set background=dark
 " colors base16-atelierseaside
 " colors lucius
 " colors base16-ocean
-colors jellybeans
-
+" colors jellybeans
+colors iceberg
 
 " let g:terminal_color_0 = '#151515'
 " let g:terminal_color_1 = '#cf6a4c'
@@ -143,6 +152,7 @@ set autoread
 set autowrite
 set backspace=indent,eol,start
 set cursorline
+set cmdheight=2
 set expandtab
 set hidden
 set hlsearch
@@ -181,6 +191,8 @@ augroup vimrcEx
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
+
+  autocmd VimResized * wincmd =
 augroup END
 
 " -------------------------------------------------------
@@ -259,6 +271,31 @@ nnoremap <CR> :nohlsearch<CR><CR>
 " Deoplete
 " -------------------------------------------------------
 let g:deoplete#enable_at_startup = 1
+
+
+" -------------------------------------------------------
+" Neosnippet
+" -------------------------------------------------------
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
 
 " -------------------------------------------------------
 " Tagbar
